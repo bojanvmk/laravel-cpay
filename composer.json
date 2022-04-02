@@ -1,0 +1,46 @@
+{
+  "name": "bojanvmk/laravel-cpay",
+  "description": "cPay (CaSys) integration for Laravel",
+  "keywords": [
+    "cpay",
+    "casys",
+    "laravel",
+    "laravel-cpay"
+  ],
+  "homepage": "https://github.com/bojanvmk/laravel-cpay",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bojan Vasilevski",
+      "email": "bojan.v.mk@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+    "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0",
+    "illuminate/view": "^6.0|^7.0|^8.0|^9.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bojanvmk\\CPay\\": "src/",
+      "Bojanvmk\\CPay\\Tests\\": "tests/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bojanvmk\\CPay\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Bojanvmk\\CPay\\CPayServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
