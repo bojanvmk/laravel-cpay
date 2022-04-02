@@ -1,11 +1,11 @@
 # laravel-cpay
-####Cpay (CaSys) integration for Laravel
+### Cpay (CaSys) integration for Laravel
 
 This package can help you integrate with cpay more easily, it can handle all the specified cpay parameters, validation and checksums generation and verification.
 
 This is just a helper class, you would still be required to create your own views/forms with your own design, and provide your own success/fail routes. You should be familiar with the "Cpay Merchant Integration Specification" document before using this package.
 
-####Installation
+### Installation
 
 ```bash 
 composer require bojanvmk/laravel-cpay
@@ -15,7 +15,7 @@ php artisan vendor:publish
 
 Edit the cpay.php config file with your own values
 
-####Basic usage:
+### Basic usage:
 
 ```php
 use Bojanvmk\CPay\CPay;
@@ -43,7 +43,7 @@ $cPayParams = $cPay->getParameters($withChecksums);
 $html = $cPay->renderHiddenInputs();
 ```
 
-####Verify return checksum from cPay
+### Verify return checksum from cPay
 
 ```php
 // Create a new instance from existing parameters
