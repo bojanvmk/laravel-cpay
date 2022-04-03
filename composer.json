@@ -21,7 +21,9 @@
     "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
     "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0",
     "illuminate/view": "^6.0|^7.0|^8.0|^9.0",
-    "ext-json": "*"
+    "wsdltophp/packagebase": "~5.0",
+    "ext-json": "*",
+    "ext-soap": "*"
   },
   "autoload": {
     "psr-4": {
