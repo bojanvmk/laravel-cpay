@@ -192,7 +192,7 @@ class CPay
         // reverse the first 2 parameters places and add cPayPaymentRef at the end
         $parameters          = $this->getParameters();
 
-        // use their returned hashed RPRef value instead of our
+        // use their returned hashed RPRef value
         if ($returnRPRef) {
             $parameters['RPRef'] = $returnRPRef;
         }
