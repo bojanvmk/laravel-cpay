@@ -27,7 +27,7 @@ class CPay
     private ?string $fee = null; // any addition fee added to the original amount, e.g. 10% fee
 
     // Requires additional contract/agreement with the bank
-    private ?string $rpRef           = null; // used with recurring payments
+    private ?string $rPRef           = null; // used with recurring payments
     private ?string $transactionType = null; // for refund use 004
     private ?int    $installment     = null; // number of installments
 
@@ -84,7 +84,7 @@ class CPay
     {
         $requestType = static::RECURRING_PAYMENT_REGISTER;
         $maxBCycles  = $maxBCycles ?? '';
-        $this->rpRef = "$requestType,$billingCycle,$maxBCycles,$billingAmount,$billingCycleStart";
+        $this->rPRef = "$requestType,$billingCycle,$maxBCycles,$billingAmount,$billingCycleStart";
 
         return $this;
     }
@@ -187,10 +187,16 @@ class CPay
         return $parameters;
     }
 
-    public function verifyReturnChecksum(int $cPayPaymentRef, string $returnCheckSum): bool
+    public function verifyReturnChecksum(int $cPayPaymentRef, string $returnCheckSum, string $returnRPRef = null): bool
     {
         // reverse the first 2 parameters places and add cPayPaymentRef at the end
         $parameters          = $this->getParameters();
+
+        // use their returned hashed RPRef value instead of our
+        if ($returnRPRef) {
+            $parameters['RPRef'] = $returnRPRef;
+        }
+
         $names               = array_keys($parameters);
         $values              = array_values($parameters);
         $reversedParamsArray = [$names[1] => $values[1]] + [$names[0] => $values[0]] + array_slice($parameters, 2);
@@ -214,7 +220,7 @@ class CPay
             'Details2'         => $this->details2,
             'OriginalAmount'   => $this->originalAmount,
             'OriginalCurrency' => $this->originalCurrency,
-            'RPRef'            => $this->rpRef,
+            'RPRef'            => $this->rPRef,
             'TransactionType'  => $this->transactionType,
             'Fee'              => $this->fee,
             'Installment'      => $this->installment,
