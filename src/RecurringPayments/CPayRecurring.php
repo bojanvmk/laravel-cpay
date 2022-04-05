@@ -15,6 +15,7 @@ class CPayRecurring
     private string $rPRef;
     private string $rPRefID;
     private string $merchantId;
+    private string $md5;
 
     public function __construct(int $amount, string $rPRef, string $rPRefID)
     {
