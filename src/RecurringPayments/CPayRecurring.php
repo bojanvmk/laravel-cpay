@@ -65,4 +65,15 @@ class CPayRecurring
 
         return $result;
     }
+
+    public function getParameters(): array
+    {
+        return [
+            'MerchantID' => $this->merchantId,
+            'RPRefID'    => $this->rPRefID,
+            'RPRef'      => $this->rPRef,
+            'Amount'     => $this->amount,
+            'MD5'        => $this->md5,
+        ];
+    }
 }
