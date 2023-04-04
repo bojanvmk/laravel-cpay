@@ -36,8 +36,7 @@ $cPay->setEmail('test@test.com')
       ...
         
 // Get all the needed cpay params which should be included in your form (as hidden inputs)
-$withChecksums = true;
-$cPayParams = $cPay->getParameters($withChecksums);
+$cPayParams = $cPay->getParameters($withChecksums = true);
 
 // This package can also generate a ready html with these parameters as hidden inputs
 $html = $cPay->renderHiddenInputs();
